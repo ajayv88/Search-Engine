@@ -267,9 +267,6 @@ def pageRank():
 	for iterations in range(0,3):
 		l = 0
 		for link in all_links:
-			if l == 1:
-				break
-			l += 1
 			current_doc = posts.find_one({'link': link})
 			graph_links = current_doc['graph_links']
 			link_page_rank_score = current_doc['page_score']
@@ -288,10 +285,10 @@ blocked = ['mlearn', 'calendar']
 social = ['facebook', 'twitter','soundcloud']
 # crawl(["https://www.ics.uci.edu"])
 output = mp.Queue()
-# tokenize_words()
+tokenize_words()
 word_document_relation()
-start = 0
-end = 27850
+start = 0 
+end = 27850  #dividing number of links/2 (for 2 processes)
 processes = []
 for _ in range(2):
 	process = mp.Process(target=fill_tfidf,args=(start,end,output))
