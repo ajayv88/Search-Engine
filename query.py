@@ -8,7 +8,7 @@ output = mp.Queue()
 
 client = MongoClient('mongodb://localhost:27017')
 
-db = client['final_search_engine_cs2']
+db = client['final_search_engine_cs']
 
 posts = db.posts
 links = db.links
@@ -18,7 +18,7 @@ my_engine = searchengine.searchEngine()
 
 print "Website is being crawled ..."
 #entire website to be crawled (as a list) and depth of crawling
-site_to_be_crawled = ['https://www.ics.uci.edu']
+site_to_be_crawled = ['https://www.csc.ncsu.edu/']
 depth = 15
 my_engine.crawl(site_to_be_crawled)
 
@@ -69,7 +69,7 @@ if links:
 	print "returned result in " + str(end-start) + " ...."
 
 else:
-	print "Sorry such a result could not be found in UCI domain ..."
+	print "Sorry such a result could not be found in NCSU domain ..."
 	end = time.time()
 	print "returned result in " + str(end-start) + " ...."
 	
